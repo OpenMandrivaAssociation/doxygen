@@ -2,8 +2,8 @@
 %{?_without_doc: %{expand: %%global builddoc 0}}
 
 Name:		doxygen
-Version:	1.5.1
-Release:	%mkrel 2
+Version:	1.5.2
+Release:	%mkrel 1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
 License:	GPL
@@ -40,7 +40,6 @@ your way in large source distributions.
 
 %prep
 %setup -q
-%{__rm} src/unistd.h
 %patch0 -p1
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
