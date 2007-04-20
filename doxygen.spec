@@ -10,9 +10,11 @@ License:	GPL
 URL:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.bz2
 Patch0:		doxygen-1.2.12-fix-latex.patch
+Patch1:		doxygen-1.5.2-syspng.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	flex
 BuildRequires:	gcc-c++
+BuildRequires:  png-devel
 BuildRequires:  qt3-devel
 
 %if %builddoc
@@ -37,6 +39,7 @@ your way in large source distributions.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1 -b .syspng
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
 # always use threaded version of qt
@@ -44,6 +47,8 @@ your way in large source distributions.
 # XXX configure is going to fail if both 32-bit and 64-bit qt3-devel
 # are installed
 find -type d -exec %{__chmod} 0755 {} \;
+# build with system libpng
+%{__rm} -rf libpng
 
 %build
 ./configure --with-doxywizard
