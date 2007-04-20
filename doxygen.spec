@@ -13,11 +13,7 @@ Patch0:		doxygen-1.2.12-fix-latex.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	flex
 BuildRequires:	gcc-c++
-%if %mdkversion < 920
-BuildRequires:	libqt3-devel >= 3.2.3-11mdk
-%else
-BuildRequires:  qt3-devel >= 3.2.3-11mdk
-%endif
+BuildRequires:  qt3-devel
 
 %if %builddoc
 BuildRequires:	tetex-latex
