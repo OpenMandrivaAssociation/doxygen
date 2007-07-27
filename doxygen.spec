@@ -2,7 +2,7 @@
 %{?_without_doc: %{expand: %%global builddoc 0}}
 
 Name:		doxygen
-Version:	1.5.2
+Version:	1.5.3
 Release:	%mkrel 1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
@@ -52,6 +52,7 @@ find -type d -exec %{__chmod} 0755 {} \;
 
 %build
 ./configure --with-doxywizard
+
 %make
 %if %builddoc
 %{__make} docs
@@ -79,5 +80,3 @@ mkdir pdf
 %{_bindir}/doxygen
 %{_bindir}/doxytag
 %{_bindir}/doxywizard
-
-
