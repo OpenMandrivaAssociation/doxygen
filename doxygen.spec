@@ -11,7 +11,7 @@ URL:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.bz2
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.5.2-syspng.patch
-BuildRequires:	XFree86-devel
+BuildRequires:	X11-devel
 BuildRequires:	flex
 BuildRequires:	gcc-c++
 BuildRequires:  png-devel
