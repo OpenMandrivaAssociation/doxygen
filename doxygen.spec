@@ -21,7 +21,6 @@ BuildRequires:  qt3-devel
 BuildRequires:	tetex-latex
 BuildRequires:	ghostscript python
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Epoch:		1
 
 %description
