@@ -3,7 +3,7 @@
 
 Name:		doxygen
 Version:	1.5.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
 License:	GPL
