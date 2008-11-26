@@ -1,4 +1,5 @@
 %bcond_without doc
+%bcond_with qt3
 
 Name:		doxygen
 Version:	1.5.7.1
@@ -6,17 +7,20 @@ Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
-License:	GPL
+License:	GPL+
 URL:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.bz2
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.5.2-syspng.patch
+Patch2:		doxygen-1.5.7.1-mandir.patch
 BuildRequires:  bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
 BuildRequires:  png-devel
+%if %with qt3
 BuildRequires:  qt3-devel
 BuildRequires:	X11-devel
+%endif
 %if %with doc
 BuildRequires:	tetex-latex
 BuildRequires:	ghostscript python
@@ -35,14 +39,25 @@ Doxygen can also be configured to extract the code-structure from
 undocumented source files. This can be very useful to quickly find
 your way in large source distributions.
 
+%if %with qt3
+%package doxywizard
+Summary: A GUI for creating and editing configuration files
+Group: Development/Other
+Requires: %{name} = %{epoch}:%{version}
+
+%description doxywizard
+Doxywizard is a GUI for creating and editing configuration files that
+are used by doxygen.
+%endif
+
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1 -b .syspng
+%patch2 -p1 -b .man
+
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
-# always use threaded version of qt
-%{__perl} -pi -e 's/^f_thread=NO/f_thread=YES/' configure
 # XXX configure is going to fail if both 32-bit and 64-bit qt3-devel
 # are installed
 find -type d -exec %{__chmod} 0755 {} \;
@@ -50,7 +65,10 @@ find -type d -exec %{__chmod} 0755 {} \;
 %{__rm} -rf libpng
 
 %build
-./configure --with-doxywizard
+./configure --prefix %_prefix \
+%if %with qt3
+	--with-doxywizard
+%endif
 
 %make
 %if %with doc
@@ -64,8 +82,7 @@ mkdir pdf
 
 %install
 %{__rm} -rf %{buildroot}
-%{__mkdir_p} %{buildroot}%{_bindir}
-%{__install} -s bin/doxy* %{buildroot}%{_bindir}
+make install INSTALL=%{buildroot}%{_prefix}
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -78,4 +95,12 @@ mkdir pdf
 %doc README
 %{_bindir}/doxygen
 %{_bindir}/doxytag
+%{_mandir}/man1/doxygen.1*
+%{_mandir}/man1/doxytag.1*
+
+%if %with qt3
+%files doxywizard
+%defattr(-,root,root)
 %{_bindir}/doxywizard
+%{_mandir}/man1/doxywizard*
+%endif
