@@ -13,6 +13,7 @@ Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.bz2
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.5.2-syspng.patch
 Patch2:		doxygen-1.5.7.1-mandir.patch
+Patch3:		doxygen-1.5.7.1-qt3.patch
 BuildRequires:  bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
@@ -55,6 +56,7 @@ are used by doxygen.
 %patch0 -p1
 %patch1 -p1 -b .syspng
 %patch2 -p1 -b .man
+%patch3 -p0 -b .qt3
 
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
@@ -65,6 +67,7 @@ find -type d -exec %{__chmod} 0755 {} \;
 %{__rm} -rf libpng
 
 %build
+unset QTDIR
 ./configure --prefix %_prefix \
 %if %with qt3
 	--with-doxywizard
