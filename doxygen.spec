@@ -3,7 +3,7 @@
 
 Name:		doxygen
 Version:	1.5.7.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
@@ -45,6 +45,7 @@ your way in large source distributions.
 Summary: A GUI for creating and editing configuration files
 Group: Development/Other
 Requires: %{name} = %{epoch}:%{version}
+Conflicts: %{name} < 1:1.5.7.1
 
 %description doxywizard
 Doxywizard is a GUI for creating and editing configuration files that
