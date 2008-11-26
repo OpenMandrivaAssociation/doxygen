@@ -70,7 +70,7 @@ find -type d -exec %{__chmod} 0755 {} \;
 	--with-doxywizard
 %endif
 
-%make
+%make LFLAGS="%{?ldflags}"
 %if %with doc
 %{__make} docs
 %{__mv} doc/float.sty latex
