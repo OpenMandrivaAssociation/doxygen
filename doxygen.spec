@@ -1,4 +1,4 @@
-%bcond_without doc
+%bcond_with doc
 %bcond_with qt4
 
 Name:		doxygen
@@ -13,6 +13,7 @@ Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.5.8-syspng.patch
 Patch2:		doxygen-1.5.8-mandir.patch
+Patch3:		doxygen-1.5.8-fix-str-fmt.patch
 BuildRequires:  bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
@@ -55,6 +56,7 @@ are used by doxygen.
 %patch0 -p1
 %patch1 -p1 -b .syspng
 %patch2 -p1 -b .man
+%patch3 -p0 -b .str
 
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
