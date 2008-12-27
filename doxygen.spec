@@ -1,5 +1,5 @@
 %bcond_with doc
-%bcond_with qt4
+%bcond_without qt4
 
 Name:		doxygen
 Version:	1.5.8
@@ -74,6 +74,7 @@ unset QTDIR
 %endif
 
 %make LFLAGS="%{?ldflags}"
+
 %if %with doc
 %{__make} docs
 %{__mv} doc/float.sty latex
@@ -101,7 +102,7 @@ make install INSTALL=%{buildroot}%{_prefix}
 %{_mandir}/man1/doxygen.1*
 %{_mandir}/man1/doxytag.1*
 
-%if %with qt3
+%if %with qt4
 %files doxywizard
 %defattr(-,root,root)
 %{_bindir}/doxywizard
