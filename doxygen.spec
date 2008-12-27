@@ -1,26 +1,24 @@
 %bcond_without doc
-%bcond_with qt3
+%bcond_with qt4
 
 Name:		doxygen
-Version:	1.5.7.1
-Release:	%mkrel 2
+Version:	1.5.8
+Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
 License:	GPL+
 URL:		http://www.stack.nl/~dimitri/doxygen/
-Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.bz2
+Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-Patch1:		doxygen-1.5.2-syspng.patch
-Patch2:		doxygen-1.5.7.1-mandir.patch
-Patch3:		doxygen-1.5.7.1-qt3.patch
+Patch1:		doxygen-1.5.8-syspng.patch
+Patch2:		doxygen-1.5.8-mandir.patch
 BuildRequires:  bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
 BuildRequires:  png-devel
-%if %with qt3
-BuildRequires:  qt3-devel
-BuildRequires:	X11-devel
+%if %with qt4
+BuildRequires:  qt4-devel
 %endif
 %if %with doc
 BuildRequires:	tetex-latex
@@ -40,7 +38,7 @@ Doxygen can also be configured to extract the code-structure from
 undocumented source files. This can be very useful to quickly find
 your way in large source distributions.
 
-%if %with qt3
+%if %with qt4
 %package doxywizard
 Summary: A GUI for creating and editing configuration files
 Group: Development/Other
@@ -57,7 +55,6 @@ are used by doxygen.
 %patch0 -p1
 %patch1 -p1 -b .syspng
 %patch2 -p1 -b .man
-%patch3 -p0 -b .qt3
 
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
@@ -70,7 +67,7 @@ find -type d -exec %{__chmod} 0755 {} \;
 %build
 unset QTDIR
 ./configure --prefix %_prefix \
-%if %with qt3
+%if %with qt4
 	--with-doxywizard
 %endif
 
