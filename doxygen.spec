@@ -2,8 +2,8 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.5.8
-Release:	%mkrel 3
+Version:	1.5.9
+Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
