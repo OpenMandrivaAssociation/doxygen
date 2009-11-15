@@ -2,7 +2,7 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.5.9
+Version:	1.6.1
 Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
@@ -11,9 +11,8 @@ License:	GPL+
 URL:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-Patch1:		doxygen-1.5.8-syspng.patch
 Patch2:		doxygen-1.5.8-mandir.patch
-Patch3:		doxygen-1.5.8-fix-str-fmt.patch
+Patch3:		doxygen-1.6.1-fix-str-fmt.patch
 BuildRequires:  bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
@@ -54,7 +53,6 @@ are used by doxygen.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1 -b .syspng
 %patch2 -p1 -b .man
 %patch3 -p0 -b .str
 
