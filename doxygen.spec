@@ -2,8 +2,8 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.6.3
-Release:	%mkrel 2
+Version:	1.7.3
+Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
@@ -12,7 +12,6 @@ URL:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch2:		doxygen-1.5.8-mandir.patch
-Patch3:		doxygen-1.6.1-fix-str-fmt.patch
 BuildRequires:  bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
@@ -54,7 +53,6 @@ are used by doxygen.
 %setup -q
 %patch0 -p1
 %patch2 -p1 -b .man
-%patch3 -p0 -b .str
 
 %{__perl} -pi -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
 %{__perl} -pi -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
@@ -65,8 +63,9 @@ find -type d -exec %{__chmod} 0755 {} \;
 %{__rm} -rf libpng
 
 %build
-unset QTDIR
-./configure --prefix %_prefix \
+./configure \
+    --prefix %_prefix \
+    --make %{_bindir}/make \
 %if %with qt4
 	--with-doxywizard
 %endif
@@ -84,6 +83,7 @@ mkdir pdf
 
 %install
 %{__rm} -rf %{buildroot}
+
 make install INSTALL=%{buildroot}%{_prefix}
 
 %clean
