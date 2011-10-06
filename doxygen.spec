@@ -2,7 +2,7 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.7.4
+Version:	1.7.5.1
 Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
@@ -64,7 +64,7 @@ find -type d -exec %{__chmod} 0755 {} \;
 
 %build
 ./configure \
-    --prefix %_prefix \
+    --prefix %{_prefix} \
     --make %{_bindir}/make \
 %if %with qt4
 	--with-doxywizard
