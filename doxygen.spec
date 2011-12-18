@@ -2,7 +2,7 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.7.5.1
+Version:	1.7.6.1
 Release:	%mkrel 1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
@@ -12,12 +12,12 @@ URL:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch2:		doxygen-1.5.8-mandir.patch
-BuildRequires:  bison
+BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
-BuildRequires:  png-devel
+BuildRequires:	png-devel
 %if %with qt4
-BuildRequires:  qt4-devel
+BuildRequires:	qt4-devel
 %endif
 %if %with doc
 BuildRequires:	tetex-latex
