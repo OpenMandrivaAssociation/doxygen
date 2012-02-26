@@ -2,8 +2,8 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.7.6.1
-Release:	%mkrel 1
+Version:	1.8.0
+Release:	1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
 Group:		Development/Other
@@ -23,7 +23,6 @@ BuildRequires:	qt4-devel
 BuildRequires:	tetex-latex
 BuildRequires:	ghostscript python
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Doxygen is a documentation system for C, C++ and IDL. It can generate
@@ -96,9 +95,7 @@ make install INSTALL=%{buildroot}%{_prefix}
 %endif
 %doc README
 %{_bindir}/doxygen
-%{_bindir}/doxytag
 %{_mandir}/man1/doxygen.1*
-%{_mandir}/man1/doxytag.1*
 
 %if %with qt4
 %files doxywizard
