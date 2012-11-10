@@ -1,0 +1,22 @@
+--- doxygen-1.5.8/Makefile.in.man	2008-12-27 19:50:06.000000000 +0100
++++ doxygen-1.5.8/Makefile.in	2008-12-27 19:50:06.000000000 +0100
+@@ -44,7 +44,7 @@
+ 
+ DATE=$(shell date "+%B %Y")
+ 
+-MAN1DIR = man/man1
++MAN1DIR = share/man/man1
+ 
+ install: doxywizard_install 
+ 	$(INSTTOOL) -d $(DESTDIR)/$(INSTALL)/bin
+--- doxygen-1.5.8/addon/doxywizard/Makefile.in~	2008-12-06 14:14:58.000000000 +0100
++++ doxygen-1.5.8/addon/doxywizard/Makefile.in	2008-12-27 20:43:00.000000000 +0100
+@@ -28,6 +28,8 @@
+ 	$(MAKE) -f Makefile.doxywizard distclean 
+ 	$(RM) Makefile.doxywizard
+ 
++MAN1DIR = share/man/man1
++
+ install:
+ 	$(INSTTOOL) -d $(INSTALL)/bin	
+ 	$(INSTTOOL) -m 755 ../../bin/doxywizard $(INSTALL)/bin	
