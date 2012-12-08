@@ -2,7 +2,7 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.8.2
+Version:	1.8.1.2
 Release:	1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
@@ -103,3 +103,125 @@ make install INSTALL=%{buildroot}%{_prefix}
 %{_bindir}/doxywizard
 %{_mandir}/man1/doxywizard*
 %endif
+
+
+%changelog
+* Fri Jul 13 2012 Bernhard Rosenkraenzer <bero@bero.eu> 1:1.8.1.2-1
++ Revision: 809111
+- Update to 1.8.1.2
+
+* Sun May 20 2012 Bernhard Rosenkraenzer <bero@bero.eu> 1:1.8.1-1
++ Revision: 799738
+- Update to 1.8.1
+
+* Sun Feb 26 2012 Bernhard Rosenkraenzer <bero@bero.eu> 1:1.8.0-1
++ Revision: 780797
+- Update to 1.8.0
+- Remove some obsolete spec file constructs
+
+* Sun Dec 18 2011 Andrey Bondrov <abondrov@mandriva.org> 1:1.7.6.1-1
++ Revision: 743419
+- New version 1.7.6.1
+
+* Thu Oct 06 2011 Andrey Bondrov <abondrov@mandriva.org> 1:1.7.5.1-1
++ Revision: 703326
+- New version: 1.7.5.1
+
+* Thu May 12 2011 Funda Wang <fwang@mandriva.org> 1:1.7.4-1
++ Revision: 673918
+- update to new version 1.7.4
+
+* Tue May 03 2011 Oden Eriksson <oeriksson@mandriva.com> 1:1.7.3-2
++ Revision: 663848
+- mass rebuild
+
+* Wed Jan 05 2011 Oden Eriksson <oeriksson@mandriva.com> 1:1.7.3-1mdv2011.0
++ Revision: 628799
+- 1.7.3
+
+* Thu Dec 02 2010 Oden Eriksson <oeriksson@mandriva.com> 1:1.6.3-2mdv2011.0
++ Revision: 604813
+- rebuild
+
+* Sun Feb 21 2010 Funda Wang <fwang@mandriva.org> 1:1.6.3-1mdv2010.1
++ Revision: 509120
+- New version 1.6.3
+
+* Wed Dec 30 2009 Frederik Himpe <fhimpe@mandriva.org> 1:1.6.2-1mdv2010.1
++ Revision: 484030
+- update to new version 1.6.2
+
+* Sun Nov 15 2009 Funda Wang <fwang@mandriva.org> 1:1.6.1-1mdv2010.1
++ Revision: 466225
+- New version 1.6.1
+
+* Fri May 01 2009 Frederik Himpe <fhimpe@mandriva.org> 1:1.5.9-1mdv2010.0
++ Revision: 369728
+- update to new version 1.5.9
+
+* Tue Jan 13 2009 Pixel <pixel@mandriva.com> 1:1.5.8-3mdv2009.1
++ Revision: 328890
+- really fix format-error patch
+
+* Mon Jan 12 2009 Pixel <pixel@mandriva.com> 1:1.5.8-2mdv2009.1
++ Revision: 328706
+- fix format-error patch
+
+* Sat Dec 27 2008 Funda Wang <fwang@mandriva.org> 1:1.5.8-1mdv2009.1
++ Revision: 320020
+- build qt4 doxywizard
+- fix qt4 dir
+- fix str fmt
+- do not build doc now
+- New version 1.5.8
+
+* Wed Nov 26 2008 Funda Wang <fwang@mandriva.org> 1:1.5.7.1-2mdv2009.1
++ Revision: 306904
+- conflicts wit old packages
+- only use pkg-config to find qt3
+- use ldflags
+- fix manpage dir
+
+  + Tomasz Pawel Gajc <tpg@mandriva.org>
+    - update to new version 1.5.7.1
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild early 2009.0 package (before pixel changes)
+
+* Sun May 18 2008 David Walluck <walluck@mandriva.org> 1:1.5.6-1mdv2009.0
++ Revision: 208769
+- BuildRequires: bison
+- use %%bcond_without for doc building
+
+  + Funda Wang <fwang@mandriva.org>
+    - update to new version 1.5.6
+
+* Mon Feb 18 2008 Thierry Vignaud <tv@mandriva.org> 1:1.5.5-2mdv2008.1
++ Revision: 170799
+- rebuild
+
+* Sun Feb 10 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1:1.5.5-1mdv2008.1
++ Revision: 164911
+- update to new version 1.5.5
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - buildrequires X11-devel instead of XFree86-devel
+
+* Sat Oct 27 2007 Funda Wang <fwang@mandriva.org> 1:1.5.4-1mdv2008.1
++ Revision: 102546
+- New version 1.5.4
+
+* Fri Jul 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 1:1.5.3-1mdv2008.0
++ Revision: 56340
+- new version
+
+* Fri Apr 20 2007 Olivier Blin <blino@mandriva.org> 1:1.5.2-1mdv2008.0
++ Revision: 16098
+- use system libpng
+- remove support for obsolete distros
+- 1.5.2
+
