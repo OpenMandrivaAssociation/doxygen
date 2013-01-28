@@ -2,7 +2,7 @@
 %bcond_without qt4
 
 Name:		doxygen
-Version:	1.8.1.2
+Version:	1.8.3.1
 Release:	1
 Epoch:		1
 Summary:	Doxygen is THE documentation system for C/C++
@@ -81,15 +81,9 @@ mkdir pdf
 %endif
 
 %install
-%{__rm} -rf %{buildroot}
-
 make install INSTALL=%{buildroot}%{_prefix}
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
-%defattr(-, root, root)
 %if %with doc
 %doc html examples pdf
 %endif
@@ -99,7 +93,6 @@ make install INSTALL=%{buildroot}%{_prefix}
 
 %if %with qt4
 %files doxywizard
-%defattr(-,root,root)
 %{_bindir}/doxywizard
 %{_mandir}/man1/doxywizard*
 %endif
