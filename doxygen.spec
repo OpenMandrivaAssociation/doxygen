@@ -1,7 +1,7 @@
 %bcond_with doc
 %bcond_without qt4
 
-Summary:	Doxygen is THE documentation system for C/C++
+Summary:	Is THE documentation system for C/C++
 Name:		doxygen
 Epoch:		1
 Version:	1.8.3.1
