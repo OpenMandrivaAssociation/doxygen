@@ -1,11 +1,11 @@
 %bcond_with doc
 %bcond_without qt4
 
-Summary:	Is THE documentation system for C/C++
+Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
 Version:	1.8.3.1
-Release:	1
+Release:	2
 Group:		Development/Other
 License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
