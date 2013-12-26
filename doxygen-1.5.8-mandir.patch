@@ -1,8 +1,6 @@
-diff --git a/Makefile.in b/Makefile.in
-index 1cd4f16..a281342 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -53,7 +53,7 @@ distclean: clean
+--- doxygen-1.8.6/Makefile.in.0002~	2013-12-26 21:57:33.140463749 +0100
++++ doxygen-1.8.6/Makefile.in	2013-12-26 21:57:53.093797345 +0100
+@@ -78,7 +78,7 @@ realclean: clean
  
  DATE=$(shell date "+%B %Y")
  
@@ -10,15 +8,13 @@ index 1cd4f16..a281342 100644
 +MAN1DIR = share/man/man1
  
  install: doxywizard_install doxysearch_install
- 	$(INSTTOOL) -d $(DESTDIR)/$(INSTALL)/bin
-diff --git a/addon/doxywizard/Makefile.in b/addon/doxywizard/Makefile.in
-index 727409a..406429a 100644
---- a/addon/doxywizard/Makefile.in
-+++ b/addon/doxywizard/Makefile.in
-@@ -28,6 +28,8 @@ distclean: Makefile.doxywizard
- 	$(MAKE) -f Makefile.doxywizard distclean 
- 	$(RM) Makefile.doxywizard
- 
+ 	$(INSTTOOL) -d $(DESTDIR)$(INSTALL)/bin
+--- doxygen-1.8.6/addon/doxywizard/Makefile.in.0002~	2013-12-26 21:57:33.140463749 +0100
++++ doxygen-1.8.6/addon/doxywizard/Makefile.in	2013-12-26 21:58:26.153797798 +0100
+@@ -34,6 +34,8 @@ realclean: Makefile.doxywizard
+ 	$(RM) config_doxyw.cpp
+ 	$(MAKE) distclean
+ 	
 +MAN1DIR = share/man/man1
 +
  install:

@@ -4,8 +4,8 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.3.1
-Release:	6
+Version:	1.8.6
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
@@ -87,7 +87,6 @@ make install INSTALL=%{buildroot}%{_prefix}
 %if %with doc
 %doc html examples pdf
 %endif
-%doc README
 %{_bindir}/doxygen
 %{_mandir}/man1/doxygen.1*
 
