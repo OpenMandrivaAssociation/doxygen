@@ -9,14 +9,3 @@
  
  install: doxywizard_install doxysearch_install
  	$(INSTTOOL) -d $(DESTDIR)$(INSTALL)/bin
---- doxygen-1.8.6/addon/doxywizard/Makefile.in.0002~	2013-12-26 21:57:33.140463749 +0100
-+++ doxygen-1.8.6/addon/doxywizard/Makefile.in	2013-12-26 21:58:26.153797798 +0100
-@@ -34,6 +34,8 @@ realclean: Makefile.doxywizard
- 	$(RM) config_doxyw.cpp
- 	$(MAKE) distclean
- 	
-+MAN1DIR = share/man/man1
-+
- install:
- 	$(INSTTOOL) -d $(INSTALL)/bin	
- 	$(INSTTOOL) -m 755 ../../bin/doxywizard $(INSTALL)/bin	
