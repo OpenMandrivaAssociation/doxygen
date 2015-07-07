@@ -4,18 +4,20 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.8
-Release:	2
+Version:	1.8.10
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-Patch2:		doxygen-1.5.8-mandir.patch
+Patch2:		doxygen-1.8.10-generate-html-default-false.patch
+
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gcc-c++
 BuildRequires:	pkgconfig(libpng)
+BuildRequires:	cmake
 %if %with qt4
 BuildRequires:	qt4-devel
 %endif
@@ -23,6 +25,7 @@ BuildRequires:	qt4-devel
 BuildRequires:	ghostscript
 BuildRequires:	python
 BuildRequires:	tetex-latex
+BuildRequires:	texlive-epstopdf
 %endif
 
 %description
@@ -53,35 +56,31 @@ are used by doxygen.
 %setup -q
 %apply_patches
 
-sed -i -e "s|^TMAKE_CFLAGS_RELEASE.*|TMAKE_CFLAGS_RELEASE = %{optflags}|" tmake/lib/linux-g++/tmake.conf
-sed -i -e "s|/lib$|/%{_lib}|" tmake/lib/linux-g++/tmake.conf
-# XXX configure is going to fail if both 32-bit and 64-bit qt3-devel
-# are installed
-find -type d -exec %{__chmod} 0755 {} \;
-# build with system libpng
-rm -rf libpng
-
 %build
-./configure \
-	--prefix %{_prefix} \
-	--make %{_bindir}/make \
-%if %with qt4
-	--with-doxywizard
+%cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
+	-DBUILD_STATIC_LIBS:BOOL=ON \
+%if %{with doc}
+	-Dbuild_doc=ON \
+%endif
+%if %{with qt4}
+	-Dbuild_wizard=ON
 %endif
 
-%make LFLAGS="%{?ldflags}"
+%make LFLAGS="%{?ldflags}" all
 
-%if %with doc
+%if %{with doc}
 %make docs
-mv doc/float.sty latex
-mv doc/fancyhdr.sty latex
-%make pdf
-mkdir pdf
-mv latex/doxygen_manual.pdf pdf
 %endif
 
 %install
-make install INSTALL=%{buildroot}%{_prefix}
+%makeinstall_std -C build
+
+%if !%{with doc}
+install -m644 doc/doxygen.1 -D %{buildroot}%{_mandir}/man1/doxygen.1
+%if %{with qt4}
+install -m644 doc/doxywizard.1 -D %{buildroot}%{_mandir}/man1/doxywizard.1
+%endif
+%endif
 
 %files
 %if %with doc
@@ -93,6 +92,6 @@ make install INSTALL=%{buildroot}%{_prefix}
 %if %with qt4
 %files doxywizard
 %{_bindir}/doxywizard
-%{_mandir}/man1/doxywizard*
+%{_mandir}/man1/doxywizard.1*
 %endif
 
