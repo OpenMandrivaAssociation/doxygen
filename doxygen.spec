@@ -5,13 +5,12 @@ Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
 Version:	1.8.10
-Release:	2
+Release:	3
 Group:		Development/Other
 License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-Patch2:		doxygen-1.8.10-generate-html-default-false.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
