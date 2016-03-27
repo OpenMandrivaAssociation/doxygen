@@ -4,8 +4,8 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.10
-Release:	4
+Version:	1.8.11
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
@@ -93,4 +93,3 @@ install -m644 doc/doxywizard.1 -D %{buildroot}%{_mandir}/man1/doxywizard.1
 %{_bindir}/doxywizard
 %{_mandir}/man1/doxywizard.1*
 %endif
-
