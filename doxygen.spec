@@ -14,7 +14,6 @@ Patch0:		doxygen-1.2.12-fix-latex.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
-BuildRequires:	gcc-c++
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
 %if %with qt4
