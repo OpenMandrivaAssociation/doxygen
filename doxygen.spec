@@ -16,6 +16,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
+BuildRequires:	llvm-devel
 %if %with qt4
 BuildRequires:	qt4-devel
 %endif
@@ -57,6 +58,7 @@ are used by doxygen.
 %build
 %cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
+	-Duse_libclang=ON \
 %if %{with doc}
 	-Dbuild_doc=ON \
 %endif
