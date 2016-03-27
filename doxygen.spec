@@ -1,5 +1,5 @@
 %bcond_with doc
-%bcond_without qt4
+%bcond_without qt5
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
@@ -16,11 +16,12 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
-BuildRequires:	llvm-devel
-%if %with qt4
-BuildRequires:	qt4-devel
+BuildRequires:	clang-devel
+%if %{with qt5}
+BuildRequires:	qmake5
+BuildRequires:	pkgconfig(Qt5Core)
 %endif
-%if %with doc
+%if %{with doc}
 BuildRequires:	ghostscript
 BuildRequires:	python
 BuildRequires:	tetex-latex
@@ -39,7 +40,7 @@ Doxygen can also be configured to extract the code-structure from
 undocumented source files. This can be very useful to quickly find
 your way in large source distributions.
 
-%if %with qt4
+%if %with qt5
 %package doxywizard
 Summary:	A GUI for creating and editing configuration files
 Group:		Development/Other
@@ -62,7 +63,7 @@ are used by doxygen.
 %if %{with doc}
 	-Dbuild_doc=ON \
 %endif
-%if %{with qt4}
+%if %{with qt5}
 	-Dbuild_wizard=ON
 %endif
 
@@ -77,7 +78,7 @@ are used by doxygen.
 
 %if !%{with doc}
 install -m644 doc/doxygen.1 -D %{buildroot}%{_mandir}/man1/doxygen.1
-%if %{with qt4}
+%if %{with qt5}
 install -m644 doc/doxywizard.1 -D %{buildroot}%{_mandir}/man1/doxywizard.1
 %endif
 %endif
@@ -89,7 +90,7 @@ install -m644 doc/doxywizard.1 -D %{buildroot}%{_mandir}/man1/doxywizard.1
 %{_bindir}/doxygen
 %{_mandir}/man1/doxygen.1*
 
-%if %with qt4
+%if %{with qt5}
 %files doxywizard
 %{_bindir}/doxywizard
 %{_mandir}/man1/doxywizard.1*
