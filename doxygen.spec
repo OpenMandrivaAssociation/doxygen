@@ -4,7 +4,7 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.12
+Version:	1.8.13
 Release:	1
 Group:		Development/Other
 License:	GPLv2
