@@ -1,11 +1,14 @@
 %bcond_with doc
 %bcond_without qt5
+%ifarch %arm
+%global optflags %{optflags} -fuse-ld=bfd
+%endif
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.12
-Release:	2
+Version:	1.8.13
+Release:	3
 Group:		Development/Other
 License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
