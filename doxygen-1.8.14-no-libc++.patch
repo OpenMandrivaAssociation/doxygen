@@ -1,0 +1,12 @@
+diff -up doxygen-1.8.14/src/CMakeLists.txt.omv~ doxygen-1.8.14/src/CMakeLists.txt
+--- doxygen-1.8.14/src/CMakeLists.txt.omv~	2018-04-28 20:00:54.204915564 +0200
++++ doxygen-1.8.14/src/CMakeLists.txt	2018-04-28 20:01:08.721584105 +0200
+@@ -252,8 +252,6 @@ if (use_libclang)
+         cmake_minimum_required(VERSION 3.1)
+         target_compile_features(_doxygen PRIVATE cxx_alignof)
+         target_compile_features(doxygen PRIVATE cxx_alignof)
+-        target_compile_options(_doxygen PRIVATE -stdlib=libc++)
+-        target_compile_options(doxygen PRIVATE -stdlib=libc++)
+     elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+         target_compile_options(_doxygen PRIVATE -std=c++11)
+         target_compile_options(doxygen PRIVATE -std=c++11)

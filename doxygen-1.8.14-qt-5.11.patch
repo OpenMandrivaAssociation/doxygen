@@ -1,0 +1,24 @@
+diff -up doxygen-1.8.14/addon/doxywizard/CMakeLists.txt.omv~ doxygen-1.8.14/addon/doxywizard/CMakeLists.txt
+--- doxygen-1.8.14/addon/doxywizard/CMakeLists.txt.omv~	2018-04-28 19:09:02.753299857 +0200
++++ doxygen-1.8.14/addon/doxywizard/CMakeLists.txt	2018-04-28 19:10:35.371130493 +0200
+@@ -4,9 +4,6 @@ if (NOT force_qt4)
+   if (Qt5Core_FOUND)
+     message(STATUS "Using Qt5")
+     find_package(Qt5 COMPONENTS Widgets Gui Xml)
+-    macro(qt_use_modules)
+-        qt5_use_modules(${ARGN})
+-    endmacro()
+     macro(qt_wrap_cpp)
+         qt5_wrap_cpp(${ARGN})
+     endmacro()
+@@ -104,9 +101,8 @@ ${GENERATED_SRC_WIZARD}/configdoc.cpp
+ ${doxywizard_MOC}
+ ${doxywizard_RESOURCES_RCC}
+ )
+-qt_use_modules(doxywizard Core Gui Widgets Xml)
+ target_link_libraries(doxywizard
+-${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY}
++	${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Xml
+ )
+ 
+ install(TARGETS doxywizard DESTINATION bin)
