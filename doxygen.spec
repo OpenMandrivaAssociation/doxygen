@@ -26,6 +26,8 @@ BuildRequires:	flex
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
 BuildRequires:	cmake(LLVM)
+# For llvm-mt, referenced by LLVMExports.cmake
+BuildRequires:	lld
 BuildRequires:	clang-devel
 %if %{with qt5}
 BuildRequires:	qmake5
