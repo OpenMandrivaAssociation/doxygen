@@ -25,6 +25,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
+BuildRequires:	cmake(LLVM)
 BuildRequires:	clang-devel
 %if %{with qt5}
 BuildRequires:	qmake5
