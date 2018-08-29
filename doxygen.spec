@@ -1,8 +1,5 @@
 %bcond_with doc
 %bcond_without qt5
-%ifarch %arm
-%global optflags %{optflags} -fuse-ld=bfd
-%endif
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
