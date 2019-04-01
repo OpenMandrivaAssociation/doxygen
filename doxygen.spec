@@ -66,7 +66,7 @@ are used by doxygen.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
@@ -79,14 +79,14 @@ are used by doxygen.
 	-Dbuild_wizard=ON
 %endif
 
-%make LFLAGS="%{?ldflags}" all
+%make_build LFLAGS="%{?ldflags}" all
 
 %if %{with doc}
-%make docs
+%make_build docs
 %endif
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %if !%{with doc}
 install -m644 doc/doxygen.1 -D %{buildroot}%{_mandir}/man1/doxygen.1
