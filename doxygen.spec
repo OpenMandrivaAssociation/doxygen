@@ -11,7 +11,7 @@ License:	GPLv2
 Url:		http://www.stack.nl/~dimitri/doxygen/
 Source0:	ftp://ftp.stack.nl/pub/users/dimitri/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-Patch1:		doxygen-1.8.14-qt-5.11.patch
+#Patch1:		doxygen-1.8.14-qt-5.11.patch
 Patch2:		doxygen-1.8.14-clang-7.patch
 # Just because we use clang doesn't mean we also want to use libc++ (yet)
 # Especially with libraries used by doxygen (Qt, clang) built against
