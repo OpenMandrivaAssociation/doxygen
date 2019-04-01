@@ -1,0 +1,22 @@
+diff -up doxygen-1.8.15/src/clangparser.cpp doxygen-1.8.15/src/clangparser.cpp-new
+--- doxygen-1.8.15/src/clangparser.cpp	2018-12-27 19:09:30.000000000 +0100
++++ doxygen-1.8.15/src/clangparser.cpp-new	2019-04-01 21:27:28.252740999 +0200
+@@ -6,6 +6,7 @@
+ #include <clang-c/Index.h>
+ #include "clang/Tooling/CompilationDatabase.h"
+ #include "clang/Tooling/Tooling.h"
++#include <clang/Tooling/CompilationDatabase.h>
+ #include <qfileinfo.h>
+ #include <stdlib.h>
+ #include "message.h"
+--- doxygen-1.8.15/src/CMakeLists.txt	2018-12-24 21:53:12.000000000 +0100
++++ doxygen-1.8.15/src/CMakeLists.txt-new	2019-04-01 21:30:18.172846991 +0200
+@@ -263,7 +263,7 @@ if (use_libclang)
+     add_definitions(${LLVM_DEFINITIONS})
+     llvm_map_components_to_libnames(llvm_libs support core option)
+     target_compile_definitions(doxygen PRIVATE ${LLVM_DEFINITIONS})
+-    set(CLANG_LIBS libclang clangTooling ${llvm_libs})
++    set(CLANG_LIBS libclang clangTooling clangBasic ${llvm_libs})
+ endif()
+ 
+ target_link_libraries(doxygen
