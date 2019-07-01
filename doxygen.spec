@@ -26,6 +26,7 @@ BuildRequires:	cmake(LLVM)
 # For llvm-mt, referenced by LLVMExports.cmake
 BuildRequires:	lld
 BuildRequires:	clang-devel
+BuildRequires:	clang-analyzer
 %if %{with qt5}
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
