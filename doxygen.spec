@@ -21,12 +21,14 @@ Patch3:		doxygen-1.8.14-no-libc++.patch
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	pkgconfig(libpng)
+%ifnarch %{riscv}
 BuildRequires:	cmake
 BuildRequires:	cmake(LLVM)
 # For llvm-mt, referenced by LLVMExports.cmake
 BuildRequires:	lld
 BuildRequires:	clang-devel
 BuildRequires:	clang-analyzer
+%endif
 %if %{with qt5}
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
@@ -72,7 +74,9 @@ are used by doxygen.
 %build
 %cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
+%ifnarch %{riscv}
 	-Duse_libclang=ON \
+%endif
 %if %{with doc}
 	-Dbuild_doc=ON \
 %endif
