@@ -21,8 +21,8 @@ Patch3:		doxygen-1.8.14-no-libc++.patch
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	pkgconfig(libpng)
-%ifnarch %{riscv}
 BuildRequires:	cmake
+%ifnarch %{riscv}
 BuildRequires:	cmake(LLVM)
 # For llvm-mt, referenced by LLVMExports.cmake
 BuildRequires:	lld
