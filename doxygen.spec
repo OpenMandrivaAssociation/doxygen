@@ -19,6 +19,7 @@ Patch3:		doxygen-1.8.14-no-libc++.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	git
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
 %ifnarch %{riscv}
