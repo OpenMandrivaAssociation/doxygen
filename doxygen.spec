@@ -28,6 +28,8 @@ BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
 %ifnarch %{riscv}
 BuildRequires:	cmake(LLVM)
+# For lit-cpuid, referenced by LLVMExports.cmake
+BuildRequires:	lldb
 # For llvm-mt, referenced by LLVMExports.cmake
 BuildRequires:	lld
 BuildRequires:	clang-devel
