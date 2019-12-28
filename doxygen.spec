@@ -4,17 +4,13 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.16
-Release:	2
+Version:	1.8.17
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://doxygen.nl
 Source0:	http://doxygen.nl/files/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-# https://bugs.kde.org/show_bug.cgi?id=411690
-# https://github.com/doxygen/doxygen/issues/7248
-# https://github.com/doxygen/doxygen/pull/7250
-Patch1:		https://github.com/doxygen/doxygen/pull/7250/commits/4a72a9b07e805b4ba27560e8e921bcee0002ef4c.patch
 Patch2:		doxygen-1.8.15-clang-8.patch
 # Just because we use clang doesn't mean we also want to use libc++ (yet)
 # Especially with libraries used by doxygen (Qt, clang) built against
@@ -105,6 +101,9 @@ install -m644 doc/doxygen.1 -D %{buildroot}%{_mandir}/man1/doxygen.1
 install -m644 doc/doxywizard.1 -D %{buildroot}%{_mandir}/man1/doxywizard.1
 %endif
 %endif
+
+# FIXME workaround for gdb 8.3.1 hang
+strip --strip-unneeded %{buildroot}%{_bindir}/doxygen
 
 %files
 %if %with doc
