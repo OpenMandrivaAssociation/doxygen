@@ -4,18 +4,14 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.8.18
+Version:	1.8.19
 Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://doxygen.nl
 Source0:	http://doxygen.nl/files/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
-Patch2:		doxygen-1.8.15-clang-8.patch
-# Just because we use clang doesn't mean we also want to use libc++ (yet)
-# Especially with libraries used by doxygen (Qt, clang) built against
-# libstdc++, that's asking for trouble
-Patch3:		doxygen-1.8.14-no-libc++.patch
+Patch1:		doxygen-1.8.19-linkage.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
@@ -70,12 +66,15 @@ are used by doxygen.
 %endif
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
+# Just because we use clang doesn't mean we also want to use libc++ (yet)
+# Especially with libraries used by doxygen (Qt, clang) built against
+# libstdc++, that's asking for trouble
 %cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
+	-Duse_libc++:BOOL=OFF \
 %ifnarch %{riscv}
 	-Duse_libclang=ON \
 %endif
