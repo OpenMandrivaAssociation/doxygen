@@ -26,6 +26,8 @@ BuildRequires:	lldb
 BuildRequires:	lld
 BuildRequires:	clang-devel
 BuildRequires:	clang-analyzer
+# For llvm-mlir-tools, referenced by LLVMExports.cmake
+BuildRequires:	llvm-mlir-tools
 %endif
 %if %{with qt5}
 BuildRequires:	qmake5
