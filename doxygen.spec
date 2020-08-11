@@ -1,11 +1,16 @@
 %bcond_with doc
 %bcond_without qt5
 
+# Disabled temporarily because of
+# https://bugs.llvm.org/show_bug.cgi?id=47117
+# https://github.com/doxygen/doxygen/issues/7956
+%bcond_with libclang
+
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
 Version:	1.8.19
-Release:	1
+Release:	2
 Group:		Development/Other
 License:	GPLv2
 Url:		http://doxygen.nl
@@ -18,7 +23,7 @@ BuildRequires:	flex
 BuildRequires:	git
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
-%ifnarch %{riscv}
+%if %{with libclang}
 BuildRequires:	cmake(LLVM)
 # For lit-cpuid, referenced by LLVMExports.cmake
 BuildRequires:	lldb
@@ -80,8 +85,10 @@ are used by doxygen.
 %cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
 	-Duse_libc++:BOOL=OFF \
-%ifnarch %{riscv}
+%if %{with libclang}
 	-Duse_libclang=ON \
+%else
+	-Duse_libclang=OFF \
 %endif
 %if %{with doc}
 	-Dbuild_doc=ON \
