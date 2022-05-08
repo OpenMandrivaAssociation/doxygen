@@ -4,12 +4,12 @@
 # Disabled temporarily because of
 # https://bugs.llvm.org/show_bug.cgi?id=47117
 # https://github.com/doxygen/doxygen/issues/7956
-%bcond_with libclang
+%bcond_without libclang
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.9.3
+Version:	1.9.4
 Release:	1
 Group:		Development/Other
 License:	GPLv2
@@ -17,6 +17,7 @@ Url:		http://doxygen.nl
 Source0:	http://doxygen.nl/files/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.8.19-linkage.patch
+Patch2:		doxygen-1.9.4-compile.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
