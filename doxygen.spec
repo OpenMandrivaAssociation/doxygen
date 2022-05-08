@@ -34,8 +34,6 @@ BuildRequires:	clang-devel
 BuildRequires:	clang-analyzer
 # For llvm-mlir-tools, referenced by LLVMExports.cmake
 BuildRequires:	llvm-mlir-tools
-BuildRequires:	%{_lib}mlir_test_cblas11
-BuildRequires:	%{_lib}mlir_test_cblas_interface11
 BuildRequires:	%{_lib}gpuruntime
 %endif
 %if %{with qt5}
