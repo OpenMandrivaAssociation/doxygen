@@ -32,6 +32,7 @@ BuildRequires:	lld
 BuildRequires:	clang-devel
 BuildRequires:	clang-analyzer
 BuildRequires:	cmake(MLIR)
+BuildRequires:	llvm-static-devel
 # For llvm-mlir-tools, referenced by LLVMExports.cmake
 BuildRequires:	llvm-mlir-tools
 BuildRequires:	%{_lib}gpuruntime
