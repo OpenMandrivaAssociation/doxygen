@@ -36,6 +36,7 @@ BuildRequires:	llvm-static-devel
 BuildRequires:	spirv-llvm-translator
 BuildRequires:	llvm-bolt
 BuildRequires:	llvm-polly
+BuildRequires:	llvm-polly-devel
 # For llvm-mlir-tools, referenced by LLVMExports.cmake
 BuildRequires:	llvm-mlir-tools
 BuildRequires:	%{_lib}gpuruntime
