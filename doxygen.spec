@@ -9,15 +9,14 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Epoch:		1
-Version:	1.9.4
-Release:	2
+Version:	1.9.5
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://doxygen.nl
 Source0:	http://doxygen.nl/files/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.8.19-linkage.patch
-Patch2:		doxygen-1.9.4-compile.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
@@ -32,6 +31,7 @@ BuildRequires:	lldb
 BuildRequires:	lld
 BuildRequires:	clang-devel
 BuildRequires:	clang-analyzer
+BuildRequires:	cmake(MLIR)
 # For llvm-mlir-tools, referenced by LLVMExports.cmake
 BuildRequires:	llvm-mlir-tools
 BuildRequires:	%{_lib}gpuruntime
