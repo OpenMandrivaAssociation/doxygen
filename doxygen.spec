@@ -71,7 +71,7 @@ your way in large source distributions.
 Summary:	A GUI for creating and editing configuration files
 Group:		Development/Other
 Requires:	%{name} = %{EVRD}
-Conflicts:	%{name} < 1:1.5.7.1
+Conflicts:	%{name} < 1.5.7.1
 
 %description doxywizard
 Doxywizard is a GUI for creating and editing configuration files that
