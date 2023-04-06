@@ -9,7 +9,7 @@
 Summary:	Documentation system for C/C++
 Name:		doxygen
 Version:	1.9.6
-Release:	2
+Release:	3
 Group:		Development/Other
 License:	GPLv2
 Url:		http://doxygen.nl
@@ -85,7 +85,8 @@ are used by doxygen.
 # Just because we use clang doesn't mean we also want to use libc++ (yet)
 # Especially with libraries used by doxygen (Qt, clang) built against
 # libstdc++, that's asking for trouble
-%cmake	-DBUILD_SHARED_LIBS:BOOL=OFF \
+%cmake	\
+	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
 	-Duse_libc++:BOOL=OFF \
 %if %{with libclang}
@@ -100,7 +101,7 @@ are used by doxygen.
 	-Dbuild_wizard=ON
 %endif
 
-%make_build LFLAGS="%{?ldflags}" all
+%make_build LFLAGS="%{?build_ldflags}" all
 
 %if %{with doc}
 %make_build docs
@@ -124,10 +125,10 @@ strip --strip-unneeded %{buildroot}%{_bindir}/doxygen
 %doc html examples pdf
 %endif
 %{_bindir}/doxygen
-%{_mandir}/man1/doxygen.1*
+%doc %{_mandir}/man1/doxygen.1*
 
 %if %{with qt5}
 %files doxywizard
 %{_bindir}/doxywizard
-%{_mandir}/man1/doxywizard.1*
+%doc %{_mandir}/man1/doxywizard.1*
 %endif
