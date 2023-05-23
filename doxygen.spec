@@ -8,8 +8,8 @@
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
-Version:	1.9.6
-Release:	3
+Version:	1.9.7
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		http://doxygen.nl
@@ -79,6 +79,7 @@ are used by doxygen.
 %endif
 
 %prep
+export LC_ALL=C.UTF-8
 %autosetup -p1
 
 %build
