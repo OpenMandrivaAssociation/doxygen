@@ -8,7 +8,7 @@
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
-Version:	1.9.7
+Version:	1.9.8
 Release:	1
 Group:		Development/Other
 License:	GPLv2
