@@ -12,7 +12,7 @@ Version:	1.12.0
 Release:	2
 Group:		Development/Other
 License:	GPLv2
-Url:		http://doxygen.nl
+Url:		https://doxygen.nl
 Source0:	http://doxygen.nl/files/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.8.19-linkage.patch
