@@ -8,15 +8,14 @@
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
-Version:	1.12.0
-Release:	2
+Version:	1.13.0
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		https://doxygen.nl
 Source0:	http://doxygen.nl/files/%{name}-%{version}.src.tar.gz
 Patch0:		doxygen-1.2.12-fix-latex.patch
 Patch1:		doxygen-1.8.19-linkage.patch
-Patch2:		https://github.com/doxygen/doxygen/pull/11064.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
