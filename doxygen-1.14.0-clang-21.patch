@@ -1,0 +1,12 @@
+diff -up doxygen-1.14.0/src/CMakeLists.txt.omv~ doxygen-1.14.0/src/CMakeLists.txt
+--- doxygen-1.14.0/src/CMakeLists.txt.omv~	2025-07-27 19:27:45.197482998 +0200
++++ doxygen-1.14.0/src/CMakeLists.txt	2025-07-27 19:28:04.690466216 +0200
+@@ -401,7 +401,7 @@ target_link_libraries(doxygen PRIVATE
+     ${Iconv_LIBRARIES}
+     ${CMAKE_THREAD_LIBS_INIT}
+     ${EXTRA_LIBS}
+-    ${CLANG_LIBS}
++    ${CLANG_LIBS} LLVMSupport LLVMDemangle
+     ${COVERAGE_LINKER_FLAGS}
+     ${DOXYGEN_EXTRA_LINK_OPTIONS}
+ )
