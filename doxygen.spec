@@ -27,6 +27,7 @@ BuildRequires:	cmake
 BuildRequires:	pkgconfig(spdlog)
 BuildRequires:	pkgconfig(fmt)
 BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(libzstd)
 %if %{with libclang}
 BuildRequires:	cmake(LLVM)
 # For lit-cpuid, referenced by LLVMExports.cmake
