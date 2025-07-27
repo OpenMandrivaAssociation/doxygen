@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libzstd)
 %if %{with libclang}
 BuildRequires:	cmake(LLVM)
+BuildRequires:	cmake(Z3)
 # For lit-cpuid, referenced by LLVMExports.cmake
 BuildRequires:	lldb
 # For llvm-mt, referenced by LLVMExports.cmake
