@@ -1,5 +1,6 @@
+%undefine _debugsource_files
+
 %bcond_with doc
-%bcond_without qt5
 
 # Disabled temporarily because of
 # https://bugs.llvm.org/show_bug.cgi?id=47117
@@ -23,6 +24,9 @@ BuildRequires:	flex
 BuildRequires:	git
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
+BuildRequires:	pkgconfig(spdlog)
+BuildRequires:	pkgconfig(fmt)
+BuildRequires:	pkgconfig(sqlite3)
 %if %{with libclang}
 BuildRequires:	cmake(LLVM)
 # For lit-cpuid, referenced by LLVMExports.cmake
@@ -41,13 +45,10 @@ BuildRequires:	llvm-polly-devel
 BuildRequires:	llvm-mlir-tools
 BuildRequires:	%{_lib}gpuruntime
 %endif
-%if %{with qt5}
-BuildRequires:	qmake5
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Xml)
-%endif
+BuildRequires:	pkgconfig(Qt6Core)
+BuildRequires:	pkgconfig(Qt6Widgets)
+BuildRequires:	pkgconfig(Qt6Gui)
+BuildRequires:	pkgconfig(Qt6Xml)
 %if %{with doc}
 BuildRequires:	ghostscript
 BuildRequires:	python
@@ -67,7 +68,6 @@ Doxygen can also be configured to extract the code-structure from
 undocumented source files. This can be very useful to quickly find
 your way in large source distributions.
 
-%if %with qt5
 %package doxywizard
 Summary:	A GUI for creating and editing configuration files
 Group:		Development/Other
@@ -77,7 +77,6 @@ Conflicts:	%{name} < 1.5.7.1
 %description doxywizard
 Doxywizard is a GUI for creating and editing configuration files that
 are used by doxygen.
-%endif
 
 %prep
 export LC_ALL=C.UTF-8
@@ -96,12 +95,14 @@ export LC_ALL=C.UTF-8
 %else
 	-Duse_libclang=OFF \
 %endif
+	-Duse_sys_spdlog=ON \
+	-Duse_sys_fmt=ON \
+	-Duse_sys_sqlite3=ON \
+	-Dforce_qt=Qt6 \
 %if %{with doc}
 	-Dbuild_doc=ON \
 %endif
-%if %{with qt5}
 	-Dbuild_wizard=ON
-%endif
 
 %make_build LFLAGS="%{?build_ldflags}" all
 
@@ -114,9 +115,7 @@ export LC_ALL=C.UTF-8
 
 %if !%{with doc}
 install -m644 doc/doxygen.1 -D %{buildroot}%{_mandir}/man1/doxygen.1
-%if %{with qt5}
 install -m644 doc/doxywizard.1 -D %{buildroot}%{_mandir}/man1/doxywizard.1
-%endif
 %endif
 
 # FIXME workaround for gdb 8.3.1 hang
@@ -129,8 +128,6 @@ strip --strip-unneeded %{buildroot}%{_bindir}/doxygen
 %{_bindir}/doxygen
 %doc %{_mandir}/man1/doxygen.1*
 
-%if %{with qt5}
 %files doxywizard
 %{_bindir}/doxywizard
 %doc %{_mandir}/man1/doxywizard.1*
-%endif
