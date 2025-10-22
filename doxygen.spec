@@ -9,8 +9,8 @@
 
 Summary:	Documentation system for C/C++
 Name:		doxygen
-Version:	1.14.0
-Release:	4
+Version:	1.15.0
+Release:	1
 Group:		Development/Other
 License:	GPLv2
 Url:		https://doxygen.nl
