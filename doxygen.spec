@@ -24,6 +24,7 @@ BuildRequires:	flex
 BuildRequires:	git
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	cmake
+BuildRequires:	make
 BuildRequires:	pkgconfig(spdlog)
 BuildRequires:	pkgconfig(fmt)
 BuildRequires:	pkgconfig(sqlite3)
