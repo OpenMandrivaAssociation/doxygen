@@ -1,8 +1,8 @@
-diff -up doxygen-1.9.4/src/CMakeLists.txt.2~ doxygen-1.9.4/src/CMakeLists.txt
---- doxygen-1.9.4/src/CMakeLists.txt.2~	2022-05-08 16:33:14.035356647 +0200
-+++ doxygen-1.9.4/src/CMakeLists.txt	2022-05-08 17:12:22.952670916 +0200
-@@ -343,7 +343,7 @@ if (use_libclang)
-         set(CLANG_LIBS libclang clangTooling)
+diff -up doxygen-1.16.0/src/CMakeLists.txt.2~ doxygen-1.16.0/src/CMakeLists.txt
+--- doxygen-1.16.0/src/CMakeLists.txt.2~	2026-01-05 21:33:30.000000000 +0100
++++ doxygen-1.16.0/src/CMakeLists.txt	2026-01-06 19:34:25.790015366 +0100
+@@ -372,7 +372,7 @@ if (use_libclang)
+         endif()
          add_definitions(-DCINDEX_NO_EXPORTS)
      else() # dynamically linked version of clang
 -        llvm_config(doxymain USE_SHARED support)
